@@ -38,7 +38,7 @@ Each model's AUC values are about 0.80 for criteo dataset, and about 0.78 for av
 
 ## API Documentation
 
-https://pytorch-fm.readthedocs.io/
+https://rixwew.github.io/pytorch-fm
 
 
 ## Licence
