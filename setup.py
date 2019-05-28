@@ -10,12 +10,12 @@ if __name__ == '__main__':
 
     setup(
         name="torchfm",
-        version="0.1",
+        version="0.2",
         description="PyTorch implementation of Factorization Machine Models",
         long_description=long_description,
-        long_description_content_type='text/markdown',
+        long_description_content_type="text/markdown",
         url="https://github.com/rixwew/torchfm",
         author="rixwew",
         author_email="rixwew@gmail.com",
-        packages=find_packages(exclude=["examples"]),
+        packages=find_packages(exclude=["examples", "docs"]),
     )
