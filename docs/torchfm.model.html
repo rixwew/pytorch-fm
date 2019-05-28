@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>torchfm.model &mdash; pytorch-fm 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="torchfm.dataset" href="torchfm.dataset.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pytorch-fm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="torchfm.html">torchfm package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="torchfm.dataset.html">torchfm.dataset</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">torchfm.model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.afi">torchfm.model.afi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.afm">torchfm.model.afm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.dcn">torchfm.model.dcn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.dfm">torchfm.model.dfm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.ffm">torchfm.model.ffm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.fm">torchfm.model.fm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.fnfm">torchfm.model.fnfm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.fnn">torchfm.model.fnn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.lr">torchfm.model.lr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.nfm">torchfm.model.nfm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.pnn">torchfm.model.pnn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.wd">torchfm.model.wd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.model.xdfm">torchfm.model.xdfm</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.html#module-torchfm.layer">torchfm.layer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pytorch-fm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="torchfm.html">torchfm package</a> &raquo;</li>
+        
+      <li>torchfm.model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/torchfm.model.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="torchfm-model">
+<h1>torchfm.model<a class="headerlink" href="#torchfm-model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-torchfm.model.afi">
+<span id="torchfm-model-afi"></span><h2>torchfm.model.afi<a class="headerlink" href="#module-torchfm.model.afi" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.afi.AutomaticFeatureInteractionModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.afi.</code><code class="descname">AutomaticFeatureInteractionModel</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em>, <em>num_heads</em>, <em>num_layers</em>, <em>mlp_dims</em>, <em>dropouts</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/afi.html#AutomaticFeatureInteractionModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.afi.AutomaticFeatureInteractionModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of AutoInt.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>W Song, et al. AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks, 2018.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="torchfm.model.afi.AutomaticFeatureInteractionModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/afi.html#AutomaticFeatureInteractionModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.afi.AutomaticFeatureInteractionModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.model.afm">
+<span id="torchfm-model-afm"></span><h2>torchfm.model.afm<a class="headerlink" href="#module-torchfm.model.afm" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.afm.AttentionalFactorizationMachineModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.afm.</code><code class="descname">AttentionalFactorizationMachineModel</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em>, <em>attn_size</em>, <em>dropouts</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/afm.html#AttentionalFactorizationMachineModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.afm.AttentionalFactorizationMachineModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of Attentional Factorization Machine.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>J Xiao, et al. Attentional Factorization Machines: Learning the Weight of Feature Interactions via Attention Networks, 2017.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="torchfm.model.afm.AttentionalFactorizationMachineModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/afm.html#AttentionalFactorizationMachineModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.afm.AttentionalFactorizationMachineModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.model.dcn">
+<span id="torchfm-model-dcn"></span><h2>torchfm.model.dcn<a class="headerlink" href="#module-torchfm.model.dcn" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.dcn.DeepCrossNetworkModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.dcn.</code><code class="descname">DeepCrossNetworkModel</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em>, <em>num_layers</em>, <em>mlp_dims</em>, <em>dropout</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/dcn.html#DeepCrossNetworkModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.dcn.DeepCrossNetworkModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of Deep &amp; Cross Network.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>R Wang, et al. Deep &amp; Cross Network for Ad Click Predictions, 2017.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="torchfm.model.dcn.DeepCrossNetworkModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/dcn.html#DeepCrossNetworkModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.dcn.DeepCrossNetworkModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.model.dfm">
+<span id="torchfm-model-dfm"></span><h2>torchfm.model.dfm<a class="headerlink" href="#module-torchfm.model.dfm" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.dfm.DeepFactorizationMachineModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.dfm.</code><code class="descname">DeepFactorizationMachineModel</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em>, <em>mlp_dims</em>, <em>dropout</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/dfm.html#DeepFactorizationMachineModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.dfm.DeepFactorizationMachineModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of DeepFM.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>H Guo, et al. DeepFM: A Factorization-Machine based Neural Network for CTR Prediction, 2017.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="torchfm.model.dfm.DeepFactorizationMachineModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/dfm.html#DeepFactorizationMachineModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.dfm.DeepFactorizationMachineModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.model.ffm">
+<span id="torchfm-model-ffm"></span><h2>torchfm.model.ffm<a class="headerlink" href="#module-torchfm.model.ffm" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.ffm.FieldAwareFactorizationMachineModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.ffm.</code><code class="descname">FieldAwareFactorizationMachineModel</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/ffm.html#FieldAwareFactorizationMachineModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.ffm.FieldAwareFactorizationMachineModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of Field-aware Factorization Machine.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>Y Juan, et al. Field-aware Factorization Machines for CTR Prediction, 2015.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="torchfm.model.ffm.FieldAwareFactorizationMachineModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/ffm.html#FieldAwareFactorizationMachineModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.ffm.FieldAwareFactorizationMachineModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.model.fm">
+<span id="torchfm-model-fm"></span><h2>torchfm.model.fm<a class="headerlink" href="#module-torchfm.model.fm" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.fm.FactorizationMachineModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.fm.</code><code class="descname">FactorizationMachineModel</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/fm.html#FactorizationMachineModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.fm.FactorizationMachineModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of Factorization Machine.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>S Rendle, Factorization Machines, 2010.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="torchfm.model.fm.FactorizationMachineModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/fm.html#FactorizationMachineModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.fm.FactorizationMachineModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.model.fnfm">
+<span id="torchfm-model-fnfm"></span><h2>torchfm.model.fnfm<a class="headerlink" href="#module-torchfm.model.fnfm" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.fnfm.FieldAwareNeuralFactorizationMachineModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.fnfm.</code><code class="descname">FieldAwareNeuralFactorizationMachineModel</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em>, <em>mlp_dims</em>, <em>dropouts</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/fnfm.html#FieldAwareNeuralFactorizationMachineModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.fnfm.FieldAwareNeuralFactorizationMachineModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of Field-aware Neural Factorization Machine.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>L Zhang, et al. Field-aware Neural Factorization Machine for Click-Through Rate Prediction, 2019.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="torchfm.model.fnfm.FieldAwareNeuralFactorizationMachineModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/fnfm.html#FieldAwareNeuralFactorizationMachineModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.fnfm.FieldAwareNeuralFactorizationMachineModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.model.fnn">
+<span id="torchfm-model-fnn"></span><h2>torchfm.model.fnn<a class="headerlink" href="#module-torchfm.model.fnn" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.fnn.FactorizationSupportedNeuralNetworkModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.fnn.</code><code class="descname">FactorizationSupportedNeuralNetworkModel</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em>, <em>mlp_dims</em>, <em>dropout</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/fnn.html#FactorizationSupportedNeuralNetworkModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.fnn.FactorizationSupportedNeuralNetworkModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of Neural Factorization Machine.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>W Zhang, et al. Deep Learning over Multi-field Categorical Data - A Case Study on User Response Prediction, 2016.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="torchfm.model.fnn.FactorizationSupportedNeuralNetworkModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/fnn.html#FactorizationSupportedNeuralNetworkModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.fnn.FactorizationSupportedNeuralNetworkModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.model.lr">
+<span id="torchfm-model-lr"></span><h2>torchfm.model.lr<a class="headerlink" href="#module-torchfm.model.lr" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.lr.LogisticRegressionModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.lr.</code><code class="descname">LogisticRegressionModel</code><span class="sig-paren">(</span><em>field_dims</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/lr.html#LogisticRegressionModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.lr.LogisticRegressionModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of Logistic Regression.</p>
+<dl class="method">
+<dt id="torchfm.model.lr.LogisticRegressionModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/lr.html#LogisticRegressionModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.lr.LogisticRegressionModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.model.nfm">
+<span id="torchfm-model-nfm"></span><h2>torchfm.model.nfm<a class="headerlink" href="#module-torchfm.model.nfm" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.nfm.NeuralFactorizationMachineModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.nfm.</code><code class="descname">NeuralFactorizationMachineModel</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em>, <em>mlp_dims</em>, <em>dropouts</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/nfm.html#NeuralFactorizationMachineModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.nfm.NeuralFactorizationMachineModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of Neural Factorization Machine.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>X He and TS Chua, Neural Factorization Machines for Sparse Predictive Analytics, 2017.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="torchfm.model.nfm.NeuralFactorizationMachineModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/nfm.html#NeuralFactorizationMachineModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.nfm.NeuralFactorizationMachineModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.model.pnn">
+<span id="torchfm-model-pnn"></span><h2>torchfm.model.pnn<a class="headerlink" href="#module-torchfm.model.pnn" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.pnn.ProductNeuralNetworkModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.pnn.</code><code class="descname">ProductNeuralNetworkModel</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em>, <em>mlp_dims</em>, <em>dropout</em>, <em>method='inner'</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/pnn.html#ProductNeuralNetworkModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.pnn.ProductNeuralNetworkModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of inner/outer Product Neural Network.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>Y Qu, et al. Product-based Neural Networks for User Response Prediction, 2016.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="torchfm.model.pnn.ProductNeuralNetworkModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/pnn.html#ProductNeuralNetworkModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.pnn.ProductNeuralNetworkModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.model.wd">
+<span id="torchfm-model-wd"></span><h2>torchfm.model.wd<a class="headerlink" href="#module-torchfm.model.wd" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.wd.WideAndDeepModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.wd.</code><code class="descname">WideAndDeepModel</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em>, <em>mlp_dims</em>, <em>dropout</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/wd.html#WideAndDeepModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.wd.WideAndDeepModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of wide and deep learning.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>HT Cheng, et al. Wide &amp; Deep Learning for Recommender Systems, 2016.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="torchfm.model.wd.WideAndDeepModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/wd.html#WideAndDeepModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.wd.WideAndDeepModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.model.xdfm">
+<span id="torchfm-model-xdfm"></span><h2>torchfm.model.xdfm<a class="headerlink" href="#module-torchfm.model.xdfm" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.model.xdfm.ExtremeDeepFactorizationMachineModel">
+<em class="property">class </em><code class="descclassname">torchfm.model.xdfm.</code><code class="descname">ExtremeDeepFactorizationMachineModel</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em>, <em>mlp_dims</em>, <em>dropout</em>, <em>cross_layer_sizes</em>, <em>split_half=True</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/xdfm.html#ExtremeDeepFactorizationMachineModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.xdfm.ExtremeDeepFactorizationMachineModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pytorch implementation of xDeepFM.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>J Lian, et al. xDeepFM: Combining Explicit and Implicit Feature Interactions for Recommender Systems, 2018.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="torchfm.model.xdfm.ExtremeDeepFactorizationMachineModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/model/xdfm.html#ExtremeDeepFactorizationMachineModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.model.xdfm.ExtremeDeepFactorizationMachineModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="torchfm.dataset.html" class="btn btn-neutral float-left" title="torchfm.dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, rixwew@gmail.com
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

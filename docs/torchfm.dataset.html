@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>torchfm.dataset &mdash; pytorch-fm 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="torchfm.model" href="torchfm.model.html" />
+    <link rel="prev" title="torchfm package" href="torchfm.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pytorch-fm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="torchfm.html">torchfm package</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">torchfm.dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.dataset.avazu">torchfm.dataset.avazu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.dataset.criteo">torchfm.dataset.criteo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-torchfm.dataset.movielens">torchfm.dataset.movielens</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html">torchfm.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.html#module-torchfm.layer">torchfm.layer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pytorch-fm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="torchfm.html">torchfm package</a> &raquo;</li>
+        
+      <li>torchfm.dataset</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/torchfm.dataset.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="torchfm-dataset">
+<h1>torchfm.dataset<a class="headerlink" href="#torchfm-dataset" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-torchfm.dataset.avazu">
+<span id="torchfm-dataset-avazu"></span><h2>torchfm.dataset.avazu<a class="headerlink" href="#module-torchfm.dataset.avazu" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.dataset.avazu.AvazuDataset">
+<em class="property">class </em><code class="descclassname">torchfm.dataset.avazu.</code><code class="descname">AvazuDataset</code><span class="sig-paren">(</span><em>dataset_path=None</em>, <em>cache_path='.avazu'</em>, <em>rebuild_cache=False</em>, <em>min_threshold=4</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/dataset/avazu.html#AvazuDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.dataset.avazu.AvazuDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Avazu Click-Through Rate Prediction Dataset</p>
+<dl class="simple">
+<dt>Dataset preparation</dt><dd><p>Remove the infrequent features (appearing in less than threshold instances) and treat them as a single feature</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_path</strong> – avazu train path</p></li>
+<li><p><strong>cache_path</strong> – lmdb cache path</p></li>
+<li><p><strong>rebuild_cache</strong> – If True, lmdb cache is refreshed</p></li>
+<li><p><strong>min_threshold</strong> – infrequent feature threshold</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference</dt><dd><p><a class="reference external" href="https://www.kaggle.com/c/avazu-ctr-prediction">https://www.kaggle.com/c/avazu-ctr-prediction</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.dataset.criteo">
+<span id="torchfm-dataset-criteo"></span><h2>torchfm.dataset.criteo<a class="headerlink" href="#module-torchfm.dataset.criteo" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.dataset.criteo.CriteoDataset">
+<em class="property">class </em><code class="descclassname">torchfm.dataset.criteo.</code><code class="descname">CriteoDataset</code><span class="sig-paren">(</span><em>dataset_path=None</em>, <em>cache_path='.criteo'</em>, <em>rebuild_cache=False</em>, <em>min_threshold=10</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/dataset/criteo.html#CriteoDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.dataset.criteo.CriteoDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Criteo Display Advertising Challenge Dataset</p>
+<dl class="simple">
+<dt>Data prepration:</dt><dd><ul class="simple">
+<li><p>Remove the infrequent features (appearing in less than threshold instances) and treat them as a single feature</p></li>
+<li><p>Discretize numerical values by log2 transformation which is proposed by the winner of Criteo Competition</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_path</strong> – criteo train.txt path.</p></li>
+<li><p><strong>cache_path</strong> – lmdb cache path.</p></li>
+<li><p><strong>rebuild_cache</strong> – If True, lmdb cache is refreshed.</p></li>
+<li><p><strong>min_threshold</strong> – infrequent feature threshold.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference:</dt><dd><p><a class="reference external" href="https://labs.criteo.com/2014/02/kaggle-display-advertising-challenge-dataset">https://labs.criteo.com/2014/02/kaggle-display-advertising-challenge-dataset</a>
+<a class="reference external" href="https://www.csie.ntu.edu.tw/~r01922136/kaggle-2014-criteo.pdf">https://www.csie.ntu.edu.tw/~r01922136/kaggle-2014-criteo.pdf</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-torchfm.dataset.movielens">
+<span id="torchfm-dataset-movielens"></span><h2>torchfm.dataset.movielens<a class="headerlink" href="#module-torchfm.dataset.movielens" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.dataset.movielens.MovieLens1MDataset">
+<em class="property">class </em><code class="descclassname">torchfm.dataset.movielens.</code><code class="descname">MovieLens1MDataset</code><span class="sig-paren">(</span><em>dataset_path</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/dataset/movielens.html#MovieLens1MDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.dataset.movielens.MovieLens1MDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>MovieLens 1M Dataset</p>
+<dl class="simple">
+<dt>Data preparation</dt><dd><p>treat samples with a rating less than 3 as negative samples</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataset_path</strong> – MovieLens dataset path</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference:</dt><dd><p><a class="reference external" href="https://grouplens.org/datasets/movielens">https://grouplens.org/datasets/movielens</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="torchfm.dataset.movielens.MovieLens20MDataset">
+<em class="property">class </em><code class="descclassname">torchfm.dataset.movielens.</code><code class="descname">MovieLens20MDataset</code><span class="sig-paren">(</span><em>dataset_path</em>, <em>sep='</em>, <em>'</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/dataset/movielens.html#MovieLens20MDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.dataset.movielens.MovieLens20MDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>MovieLens 20M Dataset</p>
+<dl class="simple">
+<dt>Data preparation</dt><dd><p>treat samples with a rating less than 3 as negative samples</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataset_path</strong> – MovieLens dataset path</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference:</dt><dd><p><a class="reference external" href="https://grouplens.org/datasets/movielens">https://grouplens.org/datasets/movielens</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="torchfm.model.html" class="btn btn-neutral float-right" title="torchfm.model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="torchfm.html" class="btn btn-neutral float-left" title="torchfm package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, rixwew@gmail.com
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

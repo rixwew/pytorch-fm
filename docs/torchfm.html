@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>torchfm package &mdash; pytorch-fm 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="torchfm.dataset" href="torchfm.dataset.html" />
+    <link rel="prev" title="pytorch-fm" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pytorch-fm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">torchfm package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.dataset.html">torchfm.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html">torchfm.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-torchfm.layer">torchfm.layer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pytorch-fm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>torchfm package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/torchfm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="torchfm-package">
+<h1>torchfm package<a class="headerlink" href="#torchfm-package" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="torchfm.dataset.html">torchfm.dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.dataset.html#module-torchfm.dataset.avazu">torchfm.dataset.avazu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.dataset.html#module-torchfm.dataset.criteo">torchfm.dataset.criteo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.dataset.html#module-torchfm.dataset.movielens">torchfm.dataset.movielens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torchfm.model.html">torchfm.model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.afi">torchfm.model.afi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.afm">torchfm.model.afm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.dcn">torchfm.model.dcn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.dfm">torchfm.model.dfm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.ffm">torchfm.model.ffm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.fm">torchfm.model.fm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.fnfm">torchfm.model.fnfm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.fnn">torchfm.model.fnn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.lr">torchfm.model.lr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.nfm">torchfm.model.nfm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.pnn">torchfm.model.pnn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.wd">torchfm.model.wd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchfm.model.html#module-torchfm.model.xdfm">torchfm.model.xdfm</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="module-torchfm.layer">
+<span id="torchfm-layer"></span><h2>torchfm.layer<a class="headerlink" href="#module-torchfm.layer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchfm.layer.AttentionalFactorizationMachine">
+<em class="property">class </em><code class="descclassname">torchfm.layer.</code><code class="descname">AttentionalFactorizationMachine</code><span class="sig-paren">(</span><em>embed_dim</em>, <em>attn_size</em>, <em>dropouts</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#AttentionalFactorizationMachine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.AttentionalFactorizationMachine" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="torchfm.layer.AttentionalFactorizationMachine.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#AttentionalFactorizationMachine.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.AttentionalFactorizationMachine.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Float tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields,</span> <span class="pre">embed_dim)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="torchfm.layer.CompressedInteractionNetwork">
+<em class="property">class </em><code class="descclassname">torchfm.layer.</code><code class="descname">CompressedInteractionNetwork</code><span class="sig-paren">(</span><em>input_dim</em>, <em>cross_layer_sizes</em>, <em>split_half=True</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#CompressedInteractionNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.CompressedInteractionNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="torchfm.layer.CompressedInteractionNetwork.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#CompressedInteractionNetwork.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.CompressedInteractionNetwork.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Float tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields,</span> <span class="pre">embed_dim)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="torchfm.layer.CrossNetwork">
+<em class="property">class </em><code class="descclassname">torchfm.layer.</code><code class="descname">CrossNetwork</code><span class="sig-paren">(</span><em>input_dim</em>, <em>num_layers</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#CrossNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.CrossNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="torchfm.layer.CrossNetwork.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#CrossNetwork.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.CrossNetwork.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Float tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields,</span> <span class="pre">embed_dim)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="torchfm.layer.FactorizationMachine">
+<em class="property">class </em><code class="descclassname">torchfm.layer.</code><code class="descname">FactorizationMachine</code><span class="sig-paren">(</span><em>reduce_sum=True</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#FactorizationMachine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.FactorizationMachine" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="torchfm.layer.FactorizationMachine.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#FactorizationMachine.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.FactorizationMachine.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Float tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields,</span> <span class="pre">embed_dim)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="torchfm.layer.FeaturesEmbedding">
+<em class="property">class </em><code class="descclassname">torchfm.layer.</code><code class="descname">FeaturesEmbedding</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#FeaturesEmbedding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.FeaturesEmbedding" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="torchfm.layer.FeaturesEmbedding.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#FeaturesEmbedding.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.FeaturesEmbedding.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="torchfm.layer.FeaturesLinear">
+<em class="property">class </em><code class="descclassname">torchfm.layer.</code><code class="descname">FeaturesLinear</code><span class="sig-paren">(</span><em>field_dims</em>, <em>output_dim=1</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#FeaturesLinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.FeaturesLinear" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="torchfm.layer.FeaturesLinear.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#FeaturesLinear.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.FeaturesLinear.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="torchfm.layer.FieldAwareFactorizationMachine">
+<em class="property">class </em><code class="descclassname">torchfm.layer.</code><code class="descname">FieldAwareFactorizationMachine</code><span class="sig-paren">(</span><em>field_dims</em>, <em>embed_dim</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#FieldAwareFactorizationMachine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.FieldAwareFactorizationMachine" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="torchfm.layer.FieldAwareFactorizationMachine.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#FieldAwareFactorizationMachine.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.FieldAwareFactorizationMachine.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Long tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="torchfm.layer.InnerProductNetwork">
+<em class="property">class </em><code class="descclassname">torchfm.layer.</code><code class="descname">InnerProductNetwork</code><a class="reference internal" href="_build/_modules/torchfm/layer.html#InnerProductNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.InnerProductNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="torchfm.layer.InnerProductNetwork.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#InnerProductNetwork.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.InnerProductNetwork.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Float tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields,</span> <span class="pre">embed_dim)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="torchfm.layer.MultiLayerPerceptron">
+<em class="property">class </em><code class="descclassname">torchfm.layer.</code><code class="descname">MultiLayerPerceptron</code><span class="sig-paren">(</span><em>input_dim</em>, <em>embed_dims</em>, <em>dropout</em>, <em>output_layer=True</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#MultiLayerPerceptron"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.MultiLayerPerceptron" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="torchfm.layer.MultiLayerPerceptron.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#MultiLayerPerceptron.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.MultiLayerPerceptron.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Float tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields,</span> <span class="pre">embed_dim)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="torchfm.layer.OuterProductNetwork">
+<em class="property">class </em><code class="descclassname">torchfm.layer.</code><code class="descname">OuterProductNetwork</code><span class="sig-paren">(</span><em>num_fields</em>, <em>embed_dim</em>, <em>kernel_type='mat'</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#OuterProductNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.OuterProductNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="torchfm.layer.OuterProductNetwork.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_build/_modules/torchfm/layer.html#OuterProductNetwork.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#torchfm.layer.OuterProductNetwork.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Float tensor of size <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_fields,</span> <span class="pre">embed_dim)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="torchfm.dataset.html" class="btn btn-neutral float-right" title="torchfm.dataset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="pytorch-fm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, rixwew@gmail.com
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
