@@ -1,5 +1,5 @@
-
-Factorization Machine models in PyTorch  
+# Factorization Machine models in PyTorch
+  
 This package provides a PyTorch implementation of factorization machine models and common datasets in CTR prediction.
 
 
