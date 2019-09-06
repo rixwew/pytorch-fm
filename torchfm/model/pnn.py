@@ -7,7 +7,6 @@ from torchfm.layer import FeaturesEmbedding, FeaturesLinear, InnerProductNetwork
 class ProductNeuralNetworkModel(torch.nn.Module):
     """
     A pytorch implementation of inner/outer Product Neural Network.
-
     Reference:
         Y Qu, et al. Product-based Neural Networks for User Response Prediction, 2016.
     """
