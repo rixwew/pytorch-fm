@@ -7,7 +7,7 @@ class FeaturesLinear(torch.nn.Module):
 
     def __init__(self, field_dims, output_dim=1):
         super().__init__()
-        self.fc = torch.nn.Embedding(sum(field_dims)+1, output_dim)
+        self.fc = torch.nn.Embedding(sum(field_dims), output_dim)
         self.bias = torch.nn.Parameter(torch.zeros((output_dim,)))
         self.offsets = np.array((0, *np.cumsum(field_dims)[:-1]), dtype=np.long)
 
@@ -23,7 +23,7 @@ class FeaturesEmbedding(torch.nn.Module):
 
     def __init__(self, field_dims, embed_dim):
         super().__init__()
-        self.embedding = torch.nn.Embedding(sum(field_dims)+1, embed_dim)
+        self.embedding = torch.nn.Embedding(sum(field_dims), embed_dim)
         self.offsets = np.array((0, *np.cumsum(field_dims)[:-1]), dtype=np.long)
         torch.nn.init.xavier_uniform_(self.embedding.weight.data)
 
@@ -41,7 +41,7 @@ class FieldAwareFactorizationMachine(torch.nn.Module):
         super().__init__()
         self.num_fields = len(field_dims)
         self.embeddings = torch.nn.ModuleList([
-            torch.nn.Embedding(sum(field_dims)+1, embed_dim) for _ in range(self.num_fields)
+            torch.nn.Embedding(sum(field_dims), embed_dim) for _ in range(self.num_fields)
         ])
         self.offsets = np.array((0, *np.cumsum(field_dims)[:-1]), dtype=np.long)
         for embedding in self.embeddings:

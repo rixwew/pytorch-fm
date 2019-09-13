@@ -136,7 +136,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset_name', default='criteo')
-    parser.add_argument('--dataset_path', description='criteo/train.txt, avazu/train, or ml-1m/ratings.dat')
+    parser.add_argument('--dataset_path', help='criteo/train.txt, avazu/train, or ml-1m/ratings.dat')
     parser.add_argument('--model_name', default='afi')
     parser.add_argument('--epoch', type=int, default=15)
     parser.add_argument('--learning_rate', type=float, default=0.001)
