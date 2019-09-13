@@ -15,6 +15,7 @@ from torchfm.model.fm import FactorizationMachineModel
 from torchfm.model.fnfm import FieldAwareNeuralFactorizationMachineModel
 from torchfm.model.fnn import FactorizationSupportedNeuralNetworkModel
 from torchfm.model.lr import LogisticRegressionModel
+from torchfm.model.ncf import NeuralCollaborativeFiltering
 from torchfm.model.nfm import NeuralFactorizationMachineModel
 from torchfm.model.pnn import ProductNeuralNetworkModel
 from torchfm.model.wd import WideAndDeepModel
@@ -34,10 +35,11 @@ def get_dataset(name, path):
         raise ValueError('unknown dataset name: ' + name)
 
 
-def get_model(name, field_dims):
+def get_model(name, dataset):
     """
     Hyperparameters are empirically determined, not opitmized.
     """
+    field_dims = dataset.field_dims
     if name == 'lr':
         return LogisticRegressionModel(field_dims)
     elif name == 'fm':
@@ -56,6 +58,12 @@ def get_model(name, field_dims):
         return DeepCrossNetworkModel(field_dims, embed_dim=16, num_layers=3, mlp_dims=(16, 16), dropout=0.2)
     elif name == 'nfm':
         return NeuralFactorizationMachineModel(field_dims, embed_dim=64, mlp_dims=(64,), dropouts=(0.2, 0.2))
+    elif name == 'ncf':
+        # only supports MovieLens dataset because for other datasets user/item colums are indistinguishable
+        assert isinstance(dataset, MovieLens20MDataset) or isinstance(dataset, MovieLens1MDataset)
+        return NeuralCollaborativeFiltering(field_dims, embed_dim=16, mlp_dims=(16, 16), dropout=0.2,
+                                            user_field_idx=dataset.user_field_idx,
+                                            item_field_idx=dataset.item_field_idx)
     elif name == 'fnfm':
         return FieldAwareNeuralFactorizationMachineModel(field_dims, embed_dim=4, mlp_dims=(64,), dropouts=(0.2, 0.2))
     elif name == 'dfm':
@@ -119,7 +127,7 @@ def main(dataset_name,
     train_data_loader = DataLoader(train_dataset, batch_size=batch_size, num_workers=8)
     valid_data_loader = DataLoader(valid_dataset, batch_size=batch_size, num_workers=8)
     test_data_loader = DataLoader(test_dataset, batch_size=batch_size, num_workers=8)
-    model = get_model(model_name, dataset.field_dims).to(device)
+    model = get_model(model_name, dataset).to(device)
     criterion = torch.nn.BCELoss()
     optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate, weight_decay=weight_decay)
     for epoch_i in range(epoch):
