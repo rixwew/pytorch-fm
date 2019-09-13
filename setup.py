@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
     setup(
         name="torchfm",
-        version="0.3",
+        version="0.4",
         description="PyTorch implementation of Factorization Machine Models",
         long_description=long_description,
         long_description_content_type="text/markdown",

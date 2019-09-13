@@ -4,7 +4,7 @@ from torchfm.layer import FeaturesEmbedding, MultiLayerPerceptron
 
 class NeuralCollaborativeFiltering(torch.nn.Module):
     """
-    A pytorch implementation of Neural Collaborate Filtering.
+    A pytorch implementation of Neural Collaborative Filtering.
 
     Reference:
         X He, et al. Neural Collaborative Filtering, 2017.

@@ -21,7 +21,7 @@ This package provides a PyTorch implementation of factorization machine models a
 | Wide&Deep | [HT Cheng, et al. Wide & Deep Learning for Recommender Systems, 2016.](https://arxiv.org/abs/1606.07792) |
 | Attentional Factorization Machine | [J Xiao, et al. Attentional Factorization Machines: Learning the Weight of Feature Interactions via Attention Networks, 2017.](https://arxiv.org/abs/1708.04617) |
 | Neural Factorization Machine | [X He and TS Chua, Neural Factorization Machines for Sparse Predictive Analytics, 2017.](https://arxiv.org/abs/1708.05027) |
-| Neural Collaborating Filtering | [X He, et al. Neural Collaborating Filtering, 2017.](https://arxiv.org/abs/1708.05031) |
+| Neural Collaborative Filtering | [X He, et al. Neural Collaborative Filtering, 2017.](https://arxiv.org/abs/1708.05031) |
 | Field-aware Neural Factorization Machine | [L Zhang, et al. Field-aware Neural Factorization Machine for Click-Through Rate Prediction, 2019.](https://arxiv.org/abs/1902.09096) |
 | Product Neural Network | [Y Qu, et al. Product-based Neural Networks for User Response Prediction, 2016.](https://arxiv.org/abs/1611.00144) |
 | Deep Cross Network | [R Wang, et al. Deep & Cross Network for Ad Click Predictions, 2017.](https://arxiv.org/abs/1708.05123) |
