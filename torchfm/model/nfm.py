@@ -1,7 +1,6 @@
 import torch
 
-from torchfm.layer import FactorizationMachine, FeaturesEmbedding, MultiLayerPerceptron
-from torchfm.model.lr import LogisticRegressionModel
+from torchfm.layer import FactorizationMachine, FeaturesEmbedding, MultiLayerPerceptron, FeaturesLinear
 
 
 class NeuralFactorizationMachineModel(torch.nn.Module):
@@ -15,7 +14,7 @@ class NeuralFactorizationMachineModel(torch.nn.Module):
     def __init__(self, field_dims, embed_dim, mlp_dims, dropouts):
         super().__init__()
         self.embedding = FeaturesEmbedding(field_dims, embed_dim)
-        self.linear = LogisticRegressionModel(field_dims)
+        self.linear = FeaturesLinear(field_dims)
         self.fm = torch.nn.Sequential(
             FactorizationMachine(reduce_sum=False),
             torch.nn.BatchNorm1d(embed_dim),
