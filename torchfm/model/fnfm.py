@@ -1,7 +1,6 @@
 import torch
 
-from torchfm.layer import FieldAwareFactorizationMachine, MultiLayerPerceptron
-from torchfm.model.lr import LogisticRegressionModel
+from torchfm.layer import FieldAwareFactorizationMachine, MultiLayerPerceptron, FeaturesLinear
 
 
 class FieldAwareNeuralFactorizationMachineModel(torch.nn.Module):
@@ -14,19 +13,19 @@ class FieldAwareNeuralFactorizationMachineModel(torch.nn.Module):
 
     def __init__(self, field_dims, embed_dim, mlp_dims, dropouts):
         super().__init__()
-        self.linear = LogisticRegressionModel(field_dims)
-        self.ffm = torch.nn.Sequential(
-            FieldAwareFactorizationMachine(field_dims, embed_dim),
-            torch.nn.BatchNorm1d(embed_dim),
-            torch.nn.Dropout(dropouts[0])
-        )
+        self.linear = FeaturesLinear(field_dims)
+        self.ffm = FieldAwareFactorizationMachine(field_dims, embed_dim)
         self.ffm_output_dim = len(field_dims) * (len(field_dims) - 1) // 2 * embed_dim
+        self.bn = torch.nn.BatchNorm1d(self.ffm_output_dim)
+        self.dropout = torch.nn.Dropout(dropouts[0])
         self.mlp = MultiLayerPerceptron(self.ffm_output_dim, mlp_dims, dropouts[1])
 
     def forward(self, x):
         """
         :param x: Long tensor of size ``(batch_size, num_fields)``
         """
-        cross_term = self.ffm(self.embed_layer(x))
-        x = self.linear(x) + self.mlp(cross_term.view(-1, self.ffm_output_dim))
+        cross_term = self.ffm(x).view(-1, self.ffm_output_dim)
+        cross_term = self.bn(cross_term)
+        cross_term = self.dropout(cross_term)
+        x = self.linear(x) + self.mlp(cross_term)
         return torch.sigmoid(x.squeeze(1))
