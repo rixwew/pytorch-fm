@@ -20,6 +20,7 @@ from torchfm.model.nfm import NeuralFactorizationMachineModel
 from torchfm.model.pnn import ProductNeuralNetworkModel
 from torchfm.model.wd import WideAndDeepModel
 from torchfm.model.xdfm import ExtremeDeepFactorizationMachineModel
+from torchfm.model.afn import AdaptiveFactorizationNetwork
 
 
 def get_dataset(name, path):
@@ -76,6 +77,10 @@ def get_model(name, dataset):
     elif name == 'afi':
         return AutomaticFeatureInteractionModel(
              field_dims, embed_dim=16, atten_embed_dim=64, num_heads=2, num_layers=3, mlp_dims=(400, 400), dropouts=(0, 0, 0))
+    elif name == 'afn':
+        print("Model:AFN")
+        return AdaptiveFactorizationNetwork(
+            field_dims, embed_dim=16, LNN_dim=1500, mlp_dims=(400,400,400), dropouts=(0, 0, 0))
     else:
         raise ValueError('unknown model name: ' + name)
 
