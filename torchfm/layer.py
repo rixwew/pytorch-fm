@@ -208,10 +208,11 @@ class CompressedInteractionNetwork(torch.nn.Module):
         self.split_half = split_half
         self.conv_layers = torch.nn.ModuleList()
         prev_dim, fc_input_dim = input_dim, 0
-        for cross_layer_size in cross_layer_sizes:
+        for i in range(self.num_layers):
+            cross_layer_size = cross_layer_sizes[i]
             self.conv_layers.append(torch.nn.Conv1d(input_dim * prev_dim, cross_layer_size, 1,
                                                     stride=1, dilation=1, bias=True))
-            if self.split_half:
+            if self.split_half and i != self.num_layers - 1:
                 cross_layer_size //= 2
             prev_dim = cross_layer_size
             fc_input_dim += prev_dim
