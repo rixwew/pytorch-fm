@@ -28,7 +28,7 @@ This package provides a PyTorch implementation of factorization machine models a
 | DeepFM | [H Guo, et al. DeepFM: A Factorization-Machine based Neural Network for CTR Prediction, 2017.](https://arxiv.org/abs/1703.04247) |
 | xDeepFM | [J Lian, et al. xDeepFM: Combining Explicit and Implicit Feature Interactions for Recommender Systems, 2018.](https://arxiv.org/abs/1803.05170) |
 | AutoInt (Automatic Feature Interaction Model) | [W Song, et al. AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks, 2018.](https://arxiv.org/abs/1810.11921) |
-| AFN(AdaptiveFactorizationNetwork Model) | [Cheng W, et al. Adaptive Factorization Network: Learning Adaptive-Order Feature Interactions,AAAI'20.](https://arxiv.org/pdf/1909.03276.pdf) |
+| AFN(AdaptiveFactorizationNetwork Model) | [Cheng W, et al. Adaptive Factorization Network: Learning Adaptive-Order Feature Interactions, AAAI'20.](https://arxiv.org/pdf/1909.03276.pdf) |
 
 Each model's AUC values are about 0.80 for criteo dataset, and about 0.78 for avazu dataset. (please see [example code](examples/main.py))
 
