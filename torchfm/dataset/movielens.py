@@ -16,8 +16,8 @@ class MovieLens20MDataset(torch.utils.data.Dataset):
         https://grouplens.org/datasets/movielens
     """
 
-    def __init__(self, dataset_path, sep=','):
-        data = pd.read_csv(dataset_path, sep=sep, engine='python').to_numpy()[:, :3]
+    def __init__(self, dataset_path, sep=',', engine='c', header='infer'):
+        data = pd.read_csv(dataset_path, sep=sep, engine=engine, header=header).to_numpy()[:, :3]
         self.items = data[:, :2].astype(np.int) - 1  # -1 because ID begins from 1
         self.targets = self.__preprocess_target(data[:, 2]).astype(np.float32)
         self.field_dims = np.max(self.items, axis=0) + 1
@@ -50,4 +50,4 @@ class MovieLens1MDataset(MovieLens20MDataset):
     """
 
     def __init__(self, dataset_path):
-        super().__init__(dataset_path, '::')
+        super().__init__(dataset_path, sep='::', engine='python', header=None)
