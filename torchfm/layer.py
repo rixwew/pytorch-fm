@@ -194,9 +194,9 @@ class AttentionalFactorizationMachine(torch.nn.Module):
         inner_product = p * q
         attn_scores = F.relu(self.attention(inner_product))
         attn_scores = F.softmax(self.projection(attn_scores), dim=1)
-        attn_scores = F.dropout(attn_scores, p=self.dropouts[0])
+        attn_scores = F.dropout(attn_scores, p=self.dropouts[0], training=self.training)
         attn_output = torch.sum(attn_scores * inner_product, dim=1)
-        attn_output = F.dropout(attn_output, p=self.dropouts[1])
+        attn_output = F.dropout(attn_output, p=self.dropouts[1], training=self.training)
         return self.fc(attn_output)
 
 
