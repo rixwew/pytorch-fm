@@ -235,3 +235,27 @@ class CompressedInteractionNetwork(torch.nn.Module):
                 h = x
             xs.append(x)
         return self.fc(torch.sum(torch.cat(xs, dim=1), 2))
+
+
+class AnovaKernel(torch.nn.Module):
+
+    def __init__(self, order, reduce_sum=True):
+        super().__init__()
+        self.order = order
+        self.reduce_sum = reduce_sum
+
+    def forward(self, x):
+        """
+        :param x: Float tensor of size ``(batch_size, num_fields, embed_dim)``
+        """
+        batch_size, num_fields, embed_dim = x.shape
+        a_prev = torch.ones((batch_size, num_fields + 1, embed_dim), dtype=torch.float).to(x.device)
+        for t in range(self.order):
+            a = torch.zeros((batch_size, num_fields + 1, embed_dim), dtype=torch.float).to(x.device)
+            a[:, t+1:, :] += x[:, t:, :] * a_prev[:, t:-1, :]
+            a = torch.cumsum(a, dim=1)
+            a_prev = a
+        if self.reduce_sum:
+            return torch.sum(a[:, -1, :], dim=-1, keepdim=True)
+        else:
+            return a[:, -1, :]

@@ -17,6 +17,7 @@ This package provides a PyTorch implementation of factorization machine models a
 | Logistic Regression | |
 | Factorization Machine | [S Rendle, Factorization Machines, 2010.](https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf) |
 | Field-aware Factorization Machine | [Y Juan, et al. Field-aware Factorization Machines for CTR Prediction, 2015.](https://www.csie.ntu.edu.tw/~cjlin/papers/ffm.pdf) |
+| Higher-Order Factorization Machines | [ M Blondel, et al. Higher-Order Factorization Machines, 2016.](https://dl.acm.org/doi/10.5555/3157382.3157473) |
 | Factorization-Supported Neural Network | [W Zhang, et al. Deep Learning over Multi-field Categorical Data - A Case Study on User Response Prediction, 2016.](https://arxiv.org/abs/1601.02376) |
 | Wide&Deep | [HT Cheng, et al. Wide & Deep Learning for Recommender Systems, 2016.](https://arxiv.org/abs/1606.07792) |
 | Attentional Factorization Machine | [J Xiao, et al. Attentional Factorization Machines: Learning the Weight of Feature Interactions via Attention Networks, 2017.](https://arxiv.org/abs/1708.04617) |

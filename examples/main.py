@@ -14,6 +14,7 @@ from torchfm.model.ffm import FieldAwareFactorizationMachineModel
 from torchfm.model.fm import FactorizationMachineModel
 from torchfm.model.fnfm import FieldAwareNeuralFactorizationMachineModel
 from torchfm.model.fnn import FactorizationSupportedNeuralNetworkModel
+from torchfm.model.hofm import HighOrderFactorizationMachineModel
 from torchfm.model.lr import LogisticRegressionModel
 from torchfm.model.ncf import NeuralCollaborativeFiltering
 from torchfm.model.nfm import NeuralFactorizationMachineModel
@@ -45,6 +46,8 @@ def get_model(name, dataset):
         return LogisticRegressionModel(field_dims)
     elif name == 'fm':
         return FactorizationMachineModel(field_dims, embed_dim=16)
+    elif name == 'hofm':
+        return HighOrderFactorizationMachineModel(field_dims, order=3, embed_dim=16)
     elif name == 'ffm':
         return FieldAwareFactorizationMachineModel(field_dims, embed_dim=4)
     elif name == 'fnn':
@@ -80,15 +83,37 @@ def get_model(name, dataset):
     elif name == 'afn':
         print("Model:AFN")
         return AdaptiveFactorizationNetwork(
-            field_dims, embed_dim=16, LNN_dim=1500, mlp_dims=(400,400,400), dropouts=(0, 0, 0))
+            field_dims, embed_dim=16, LNN_dim=1500, mlp_dims=(400, 400, 400), dropouts=(0, 0, 0))
     else:
         raise ValueError('unknown model name: ' + name)
 
 
-def train(model, optimizer, data_loader, criterion, device, log_interval=1000):
+class EarlyStopper(object):
+
+    def __init__(self, num_trials, save_path):
+        self.num_trials = num_trials
+        self.trial_counter = 0
+        self.best_accuracy = 0
+        self.save_path = save_path
+
+    def is_continuable(self, model, accuracy):
+        if accuracy > self.best_accuracy:
+            self.best_accuracy = accuracy
+            self.trial_counter = 0
+            torch.save(model, self.save_path)
+            return True
+        elif self.trial_counter + 1 < self.num_trials:
+            self.trial_counter += 1
+            return True
+        else:
+            return False
+
+
+def train(model, optimizer, data_loader, criterion, device, log_interval=100):
     model.train()
     total_loss = 0
-    for i, (fields, target) in enumerate(tqdm.tqdm(data_loader, smoothing=0, mininterval=1.0)):
+    tk0 = tqdm.tqdm(data_loader, smoothing=0, mininterval=1.0)
+    for i, (fields, target) in enumerate(tk0):
         fields, target = fields.to(device), target.to(device)
         y = model(fields)
         loss = criterion(y, target.float())
@@ -97,7 +122,7 @@ def train(model, optimizer, data_loader, criterion, device, log_interval=1000):
         optimizer.step()
         total_loss += loss.item()
         if (i + 1) % log_interval == 0:
-            print('    - loss:', total_loss / log_interval)
+            tk0.set_postfix(loss=total_loss / log_interval)
             total_loss = 0
 
 
@@ -135,13 +160,16 @@ def main(dataset_name,
     model = get_model(model_name, dataset).to(device)
     criterion = torch.nn.BCELoss()
     optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate, weight_decay=weight_decay)
+    early_stopper = EarlyStopper(num_trials=2, save_path=f'{save_dir}/{model_name}.pt')
     for epoch_i in range(epoch):
         train(model, optimizer, train_data_loader, criterion, device)
         auc = test(model, valid_data_loader, device)
         print('epoch:', epoch_i, 'validation: auc:', auc)
+        if not early_stopper.is_continuable(model, auc):
+            print(f'validation: best auc: {early_stopper.best_accuracy}')
+            break
     auc = test(model, test_data_loader, device)
-    print('test auc:', auc)
-    torch.save(model, f'{save_dir}/{model_name}.pt')
+    print(f'test auc: {auc}')
 
 
 if __name__ == '__main__':
@@ -151,7 +179,7 @@ if __name__ == '__main__':
     parser.add_argument('--dataset_name', default='criteo')
     parser.add_argument('--dataset_path', help='criteo/train.txt, avazu/train, or ml-1m/ratings.dat')
     parser.add_argument('--model_name', default='afi')
-    parser.add_argument('--epoch', type=int, default=15)
+    parser.add_argument('--epoch', type=int, default=100)
     parser.add_argument('--learning_rate', type=float, default=0.001)
     parser.add_argument('--batch_size', type=int, default=2048)
     parser.add_argument('--weight_decay', type=float, default=1e-6)
