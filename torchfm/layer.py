@@ -96,7 +96,7 @@ class MultiLayerPerceptron(torch.nn.Module):
 
     def forward(self, x):
         """
-        :param x: Float tensor of size ``(batch_size, num_fields, embed_dim)``
+        :param x: Float tensor of size ``(batch_size, embed_dim)``
         """
         return self.mlp(x)
 
