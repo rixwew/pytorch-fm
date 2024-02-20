@@ -14,7 +14,7 @@ from torchfm.model.ffm import FieldAwareFactorizationMachineModel
 from torchfm.model.fm import FactorizationMachineModel
 from torchfm.model.fnfm import FieldAwareNeuralFactorizationMachineModel
 from torchfm.model.fnn import FactorizationSupportedNeuralNetworkModel
-from torchfm.model.hofm import HighOrderFactorizationMachineModel
+# from torchfm.model.hofm import HighOrderFactorizationMachineModel
 from torchfm.model.lr import LogisticRegressionModel
 from torchfm.model.ncf import NeuralCollaborativeFiltering
 from torchfm.model.nfm import NeuralFactorizationMachineModel
@@ -22,7 +22,7 @@ from torchfm.model.pnn import ProductNeuralNetworkModel
 from torchfm.model.wd import WideAndDeepModel
 from torchfm.model.xdfm import ExtremeDeepFactorizationMachineModel
 from torchfm.model.afn import AdaptiveFactorizationNetwork
-
+from custom_ds import CustomDataset
 
 def get_dataset(name, path):
     if name == 'movielens1M':
@@ -33,6 +33,8 @@ def get_dataset(name, path):
         return CriteoDataset(path)
     elif name == 'avazu':
         return AvazuDataset(path)
+    elif name == 'custom':
+        return CustomDataset(path)
     else:
         raise ValueError('unknown dataset name: ' + name)
 
@@ -154,9 +156,9 @@ def main(dataset_name,
     test_length = len(dataset) - train_length - valid_length
     train_dataset, valid_dataset, test_dataset = torch.utils.data.random_split(
         dataset, (train_length, valid_length, test_length))
-    train_data_loader = DataLoader(train_dataset, batch_size=batch_size, num_workers=8)
-    valid_data_loader = DataLoader(valid_dataset, batch_size=batch_size, num_workers=8)
-    test_data_loader = DataLoader(test_dataset, batch_size=batch_size, num_workers=8)
+    train_data_loader = DataLoader(train_dataset, batch_size=batch_size, num_workers=0)
+    valid_data_loader = DataLoader(valid_dataset, batch_size=batch_size, num_workers=0)
+    test_data_loader = DataLoader(test_dataset, batch_size=batch_size, num_workers=0)
     model = get_model(model_name, dataset).to(device)
     criterion = torch.nn.BCELoss()
     optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate, weight_decay=weight_decay)
@@ -176,14 +178,14 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset_name', default='criteo')
-    parser.add_argument('--dataset_path', help='criteo/train.txt, avazu/train, or ml-1m/ratings.dat')
-    parser.add_argument('--model_name', default='afi')
+    parser.add_argument('--dataset_name', default='custom')
+    parser.add_argument('--dataset_path', default='/Users/user/Library/Mobile Documents/com~apple~CloudDocs/mac/work/train_torch_fm/tiny_data.csv',help='criteo/train.txt, avazu/train, or ml-1m/ratings.dat')
+    parser.add_argument('--model_name', default='fm')
     parser.add_argument('--epoch', type=int, default=100)
     parser.add_argument('--learning_rate', type=float, default=0.001)
     parser.add_argument('--batch_size', type=int, default=2048)
     parser.add_argument('--weight_decay', type=float, default=1e-6)
-    parser.add_argument('--device', default='cuda:0')
+    parser.add_argument('--device', default='mps')
     parser.add_argument('--save_dir', default='chkpt')
     args = parser.parse_args()
     main(args.dataset_name,

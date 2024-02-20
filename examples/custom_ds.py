@@ -1,8 +1,6 @@
-import math
 import shutil
 import struct
 from collections import defaultdict
-from functools import lru_cache
 from pathlib import Path
 
 import lmdb
@@ -11,27 +9,24 @@ import torch.utils.data
 from tqdm import tqdm
 
 
-class CriteoDataset(torch.utils.data.Dataset):
+class CustomDataset(torch.utils.data.Dataset):
     """
-    Criteo Display Advertising Challenge Dataset
+    Avazu Click-Through Rate Prediction Dataset
 
-    Data prepration:
-        * Remove the infrequent features (appearing in less than threshold instances) and treat them as a single feature
-        * Discretize numerical values by log2 transformation which is proposed by the winner of Criteo Competition
+    Dataset preparation
+        Remove the infrequent features (appearing in less than threshold instances) and treat them as a single feature
 
-    :param dataset_path: criteo train.txt path.
-    :param cache_path: lmdb cache path.
-    :param rebuild_cache: If True, lmdb cache is refreshed.
-    :param min_threshold: infrequent feature threshold.
+    :param dataset_path: avazu train path
+    :param cache_path: lmdb cache path
+    :param rebuild_cache: If True, lmdb cache is refreshed
+    :param min_threshold: infrequent feature threshold
 
-    Reference:
-        https://labs.criteo.com/2014/02/kaggle-display-advertising-challenge-dataset
-        https://www.csie.ntu.edu.tw/~r01922136/kaggle-2014-criteo.pdf
+    Reference
+        https://www.kaggle.com/c/avazu-ctr-prediction
     """
 
-    def __init__(self, dataset_path=None, cache_path='.criteo', rebuild_cache=False, min_threshold=10):
-        self.NUM_FEATS = 39
-        self.NUM_INT_FEATS = 13
+    def __init__(self, dataset_path=None, num_feats=None, cache_path='.custom_ds', rebuild_cache=False, min_threshold=4):
+        self.NUM_FEATS = 6
         self.min_threshold = min_threshold
         if rebuild_cache or not Path(cache_path).exists():
             shutil.rmtree(cache_path, ignore_errors=True)
@@ -68,16 +63,15 @@ class CriteoDataset(torch.utils.data.Dataset):
     def __get_feat_mapper(self, path):
         feat_cnts = defaultdict(lambda: defaultdict(int))
         with open(path) as f:
+            f.readline()
             pbar = tqdm(f, mininterval=1, smoothing=0.1)
-            pbar.set_description('Create criteo dataset cache: counting features')
+            pbar.set_description('Create custom dataset cache: counting features')
             for line in pbar:
-                values = line.rstrip('\n').split('\t')
-                if len(values) != self.NUM_FEATS + 1:
+                values = line.rstrip('\n').split(',')
+                if len(values) != self.NUM_FEATS + 2:
                     continue
-                for i in range(1, self.NUM_INT_FEATS + 1):
-                    feat_cnts[i][convert_numeric_feature(values[i])] += 1
-                for i in range(self.NUM_INT_FEATS + 1, self.NUM_FEATS + 1):
-                    feat_cnts[i][values[i]] += 1
+                for i in range(1, self.NUM_FEATS + 1):
+                    feat_cnts[i][values[i + 1]] += 1
         feat_mapper = {i: {feat for feat, c in cnt.items() if c >= self.min_threshold} for i, cnt in feat_cnts.items()}
         feat_mapper = {i: {feat: idx for idx, feat in enumerate(cnt)} for i, cnt in feat_mapper.items()}
         defaults = {i: len(cnt) for i, cnt in feat_mapper.items()}
@@ -87,32 +81,20 @@ class CriteoDataset(torch.utils.data.Dataset):
         item_idx = 0
         buffer = list()
         with open(path) as f:
+            f.readline()
             pbar = tqdm(f, mininterval=1, smoothing=0.1)
-            pbar.set_description('Create criteo dataset cache: setup lmdb')
+            pbar.set_description('Create avazu dataset cache: setup lmdb')
             for line in pbar:
-                values = line.rstrip('\n').split('\t')
-                if len(values) != self.NUM_FEATS + 1:
+                values = line.rstrip('\n').split(',')
+                if len(values) != self.NUM_FEATS + 2:
                     continue
                 np_array = np.zeros(self.NUM_FEATS + 1, dtype=np.uint32)
-                np_array[0] = int(values[0])
-                for i in range(1, self.NUM_INT_FEATS + 1):
-                    np_array[i] = feat_mapper[i].get(convert_numeric_feature(values[i]), defaults[i])
-                for i in range(self.NUM_INT_FEATS + 1, self.NUM_FEATS + 1):
-                    np_array[i] = feat_mapper[i].get(values[i], defaults[i])
+                np_array[0] = int(values[1])
+                for i in range(1, self.NUM_FEATS + 1):
+                    np_array[i] = feat_mapper[i].get(values[i+1], defaults[i])
                 buffer.append((struct.pack('>I', item_idx), np_array.tobytes()))
                 item_idx += 1
                 if item_idx % buffer_size == 0:
                     yield buffer
                     buffer.clear()
             yield buffer
-
-
-@lru_cache(maxsize=None)
-def convert_numeric_feature(val: str):
-    if val == '':
-        return 'NULL'
-    v = int(val)
-    if v > 2:
-        return str(int(math.log(v) ** 2))
-    else:
-        return str(v - 2)
